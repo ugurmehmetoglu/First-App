@@ -42,4 +42,13 @@ app.put('/people', function(req,res){
     .catch(err => console.log(err))
 })
 
+app.delete('/people', function(req,res){
+    Person.destroy({
+        where:{
+            id:req.body.id
+        }
+    }).then(result => res.send("deleted"))
+    .catch(err => res.send(err))
+})
+
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
