@@ -10,7 +10,7 @@ const sequelize = require('../database/index.js').sequelize
 
 app.use(bodyParser.urlencoded({ extended: false }))
  app.use(bodyParser.json())
-app.use( express.static(path.join(__dirname, 'static')))
+app.use(express.static(path.join(__dirname, '../static')))
 
 
 app.get('/people', (req, res) => 
