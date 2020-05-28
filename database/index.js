@@ -12,24 +12,34 @@ const sequelize = new Sequelize('ugur', 'root', '', {
   .then(()=> console.log("database connected"))
   .catch(err => console.log(err));
 
-  const Person = sequelize.define("person", {
-      name:{
-          type: DataTypes.STRING,
+
+
+  const Product = sequelize.define("product", {
+      imgURL:{
+          type:DataTypes.STRING,
           allowNull:false
       },
-      lastName:{
-          type: DataTypes.STRING,
+      type:{
+          type:DataTypes.STRING,
           allowNull:false
-          
+      },
+      name:{
+          type:DataTypes.STRING,
+          allowNull:false
+      },
+      price:{
+          type:DataTypes.STRING,
+          allowNull:false
       }
   },{
       timestamps:false
   })
 
-  Person.sync();
+  Product.sync();
 
 
   module.exports={
-    Person,
-    sequelize
+    
+    sequelize,
+    Product
   }
