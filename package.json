@@ -27,7 +27,7 @@
     "mysql2": "^2.1.0",
     "nodemon": "^1.18.9",
     "path": "^0.12.7",
-    "react": "^16.8.0",
+    "react": "^16.13.1",
     "react-dom": "^16.8.0",
     "sequelize": "^5.21.10",
     "webpack": "^4.28.4",
@@ -37,6 +37,8 @@
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.2.3",
     "@babel/preset-es2015": "^7.0.0-beta.53",
-    "@babel/preset-react": "^7.0.0"
+    "@babel/preset-react": "^7.0.0",
+    "css-loader": "^3.5.3",
+    "style-loader": "^1.2.1"
   }
 }
