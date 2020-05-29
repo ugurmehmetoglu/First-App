@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom'
 import axios from 'axios'
 import Card from './Card.jsx'
+import Search from './Search.jsx'
 
 function App() {
 
@@ -61,9 +61,22 @@ function App() {
             .catch(err => console.log(err))
     }
 
+    function handleSearch(searchItem){
+        console.log(searchItem)
+        axios
+        .get('/search', {params:{name:searchItem}})
+        .then(res => {
+            setProduct(res.data) 
+        })
+        .catch(err => console.log(err))
+        event.preventDefault()
+    }
+
+
     useEffect(() => {
+        console.log('use')
         fetchData()
-    });
+    },[]);
 
 
 
@@ -81,15 +94,17 @@ function App() {
                 </div>
 
             </div>
-            <div class="card-list">
+            <div className="card-list">
                 {products.map((product,i) => <Card key={i} updateProduct={updateProduct} deleteProduct={deleteProduct} id={product.id} imgURL={product.imgURL} name={product.name} type={product.type} price={product.price} /> )}
                 
                 
 
             </div>
+            <div>
+                <Search handleSearch={handleSearch}/>
+            </div>
         </div>
-
-
+       
     )
 
 }
