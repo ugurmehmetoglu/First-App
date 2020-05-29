@@ -3,15 +3,23 @@ const app = express()
 const path=require('path')
 const bodyParser = require('body-parser')
 const port = 3000
-const{Sequelize}=require('sequelize')
+const{Sequelize, Op}=require('sequelize')
 const sequelize = require('../database/index.js').sequelize
 const Product = require("../database/index.js").Product
+
 
 
 app.use(bodyParser.urlencoded({ extended: false }))
  app.use(bodyParser.json())
 app.use(express.static(path.join(__dirname, '../static')))
 
+app.get('/search', function(req,res){
+    var query = req.query.name
+    console.log(query)
+    Product.findAll({where:{name:{[Op.like]: "%" + query + "%" }}})
+    .then(result => res.send(result))
+    .catch(err => res.send(err))
+})
 
 app.get('/products', (req, res) => 
     Product.findAll().then((result)=>res.send(result))
